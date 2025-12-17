@@ -146,21 +146,31 @@ feature_combinations = {
 
 ## Common Issues and Solutions
 
-### Issue 1: EMNIST Dataset Not Downloading
+### Issue 1: "File is not a zip file" Error
+**Problem**: Corrupted EMNIST dataset cache file
+
+**Solution**: The notebook now automatically detects and fixes this. If the error persists:
+```bash
+# Manually delete the corrupted cache
+rm ~/.cache/emnist/emnist.zip
+# Then re-run the data acquisition cell
+```
+
+### Issue 2: EMNIST Dataset Not Downloading
 **Solution**: Check internet connection or manually download
 ```python
 import emnist
 emnist.list_datasets()  # This triggers download
 ```
 
-### Issue 2: Out of Memory
+### Issue 3: Out of Memory
 **Solution**: Reduce sample size or close other applications
 ```python
 SAMPLE_SIZE_TRAIN = 5000
 SAMPLE_SIZE_TEST = 1000
 ```
 
-### Issue 3: Long Training Time
+### Issue 4: Long Training Time
 **Solution**: Use fewer models or simpler features
 ```python
 # Train only fast models
@@ -170,7 +180,7 @@ models = {
 }
 ```
 
-### Issue 4: Matplotlib Plots Not Showing
+### Issue 5: Matplotlib Plots Not Showing
 **Solution**: Add at notebook start
 ```python
 %matplotlib inline
