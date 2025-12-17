@@ -103,6 +103,24 @@ feature_combinations = {
 
 ## Troubleshooting
 
+### Issue: "File is not a zip file" Error
+
+**Problem**: The cached EMNIST dataset file is corrupted or incomplete.
+
+**Solution**: The notebook now automatically detects and removes corrupted cache files. If you encounter this error:
+
+1. The notebook will automatically attempt to remove the corrupted file
+2. Re-run the data acquisition cell to download a fresh copy
+3. If automatic removal fails, manually delete the cache:
+```bash
+rm ~/.cache/emnist/emnist.zip
+```
+
+**Why this happens**: 
+- Interrupted downloads leave incomplete files
+- Network errors can corrupt the cached zip file
+- The file exists but is not a valid zip archive
+
 ### Issue: EMNIST Download Fails
 
 **Solution**: Manually download dataset
